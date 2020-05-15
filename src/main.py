@@ -118,7 +118,7 @@ def create_app(test_config=None):
                 gender=data.get('gender')
             )
             actor.insert()
-            
+
             return jsonify({
                 'success': True,
                 'actor': [actor.format()]
@@ -136,7 +136,7 @@ def create_app(test_config=None):
             .one_or_none()
         )
         try:
-            #actor.name = data.get('name')
+            actor.name = data.get('name')
             actor.age = data.get('age')
             actor.gender = data.get('gender')
 

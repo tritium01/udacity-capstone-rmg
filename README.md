@@ -136,7 +136,10 @@ DELETE '/actors/<actors_id>'
 
 
 ## Testing
-test_app.py is included in order to run a unittest please use the following commands to successfully run the test
+test_app.py is included in order to run a unittest please use the following commands to successfully run the test there is also a auth.py in root folder than can be run with
+```
+python auth.py which will return a jwt with full privileges
+```
 ```
 dropdb agency_test
 createdb agency_test
