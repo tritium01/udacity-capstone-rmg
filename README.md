@@ -1,4 +1,4 @@
-# Full Stack Trivia API Backend
+# Full Stack Udacity Capstone API Backend
 
 ## Getting Started
 
@@ -46,7 +46,7 @@ flask run
 
 Setting the `FLASK_ENV` variable to `development` will detect file changes and restart the server automatically.
 
-Setting the `FLASK_APP` variable to `flaskr` directs flask to use the `flaskr` directory and the `__init__.py` file to find the application. 
+Setting the `FLASK_APP` variable to `app.py`
 
 ## Tasks
 
@@ -78,6 +78,10 @@ One test for error behavior of each endpoint
 At least two tests of RBAC for each role
 
 END POINT DESCRIPTION
+-Endpoints are located in the following URI:
+```
+https://udacity-capstone-rmg.herokuapp.com/
+```
 ```
 
 
@@ -132,9 +136,17 @@ DELETE '/actors/<actors_id>'
 
 
 ## Testing
-To run the tests, run
+test_app.py is included in order to run a unittest please use the following commands to successfully run the test
 ```
 dropdb agency_test
 createdb agency_test
 python test_app.py
 ```
+## Testing Postman
+A postman collection is also included in order to facilitate testing of endpoints there are three folders one for each profile and an individual 
+endpoint named GET TOKEN which takes in a json with a key of client and value of the RBAC profile as a string
+by default the token is set to retrieve the executive producer token.
+Host and jwt tokens are set as variables please go to collection settings if you need to change something like a expired jwt
+Collection will be uploaded with a 24 hour jwt for reviewers to use, if by some reason the token expires please use the provided token endpoint to renew your jwt token for each RBAC profile
+
+

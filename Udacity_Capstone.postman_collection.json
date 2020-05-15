@@ -1,0 +1,1232 @@
+{
+	"info": {
+		"_postman_id": "4ffac833-fdbb-409a-9f1b-279b8be9a56b",
+		"name": "Udacity_Capstone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Casting Assistant",
+			"item": [
+				{
+					"name": "GET Movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ec21ea4f-c6ec-433c-9135-9848420cab25",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains drinks array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.movies).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/movies",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b9601bb0-5aca-46af-b45e-cef107ead81c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains drinks array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.actors).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/actors",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2a9a6e91-c611-4030-92ee-6d70ad03fa4e",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"test102\",\n\t\"release\": \"2016-06-22 19:10:25-07\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/movies",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Actor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0daccd48-16c8-4c57-84a1-c11ae1f55537",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"BanJaviia\",\n\t\"age\": 78,\n\t\"gender\": \"male\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/actors",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH Movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1eb50c39-ea4c-4940-8a10-7e6050b6f30b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains drinks array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.movie).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkF4RHp0NGh2MzlOZ0tteUZ0cU55aSJ9.eyJpc3MiOiJodHRwczovL3JtZ21leC5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMDE5MDQzODY2MTg5NTI2NTg3OTAiLCJhdWQiOlsiY29mZmVlIiwiaHR0cHM6Ly9ybWdtZXguYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU4OTE0NzUyNiwiZXhwIjoxNTg5MjMzOTI2LCJhenAiOiJPMHRzTG9hc1NxWXY1aThYRWtqZG43T1Bkblg3UFdTZSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6ZHJpbmtzIiwiZ2V0OmRyaW5rcy1kZXRhaWwiLCJwYXRjaDpkcmlua3MiLCJwb3N0OmRyaW5rcyJdfQ.I1xoTqo-2bXl4QDEmZZQ72xckBZwDSbZT4lwvpTNotqqB8F3tywMGkdkVgrw3DdZYrxj-zBP1dwP98AlRkFm2EoGQo6oli8a84xwKGhOaNd87cVCLB-hWxaupbXdGcIbyXFDiayogOXq9JGzhIB8-gHY9YrMwgesn_HzQydQpbQHFBUeEJ5xpEt_E1HIF5EQkMurRGeamv7U0xyHaT1eql7WaZ7dCqmm-JiKZHBihK6RY0160YAfXUOpZ1pdbjEYMzVOD4wQk3eVJAnPvdxINYLrNRH_LhJenNd1d4FLGlCJKzlomXiSheomnbBHLf7hK9XWmNiaIV42T4jCQVfswg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"test102\",\n\t\"release\": \"2021-05-12 19:40:01.918917\"\n\n}"
+						},
+						"url": {
+							"raw": "{{host}}/movies/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH Actor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "17ae480a-5933-4e02-bb9a-b5161a53c220",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains drinks array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.movie).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"Bon Javij 1\", \"age\": 20, \"gender\": \"female\"}"
+						},
+						"url": {
+							"raw": "{{host}}/actors/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"actors",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "85165e14-6266-4445-94cf-12ad8be3a931",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/movies/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Actor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8ec7f827-45a9-469f-840e-b9a507e28845",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/actors/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"actors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Udacity Capstone test for Casting assistant with get only privilages",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{assistant_jwt\n}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ffd608de-05c2-410e-a371-f25f89246648",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "258efb5c-2d7b-47b1-82e9-225110d1e8a5",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Casting Director",
+			"item": [
+				{
+					"name": "GET Movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "86208ec0-b6da-4fe8-989c-ebe145622c98",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains drinks array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.movies).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/movies",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "51f8f72c-b58a-4761-af40-5299fc5b8f85",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains drinks array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.actors).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/actors",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5f7536b6-d62b-44df-ac2d-4b4795313e86",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"test101\",\n\t\"release\": \"2020-05-12 19:40:01.918917\"\n\n}"
+						},
+						"url": {
+							"raw": "{{host}}/movies",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Actor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a9a8b7ff-f0ea-4bb1-87eb-6bcf22ef89c7",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"BanJavi\",\n\t\"age\": 78,\n\t\"gender\": \"male\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/actors",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH Movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "516c6f1a-65d3-4c8d-8cdd-801463ca5173",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains drinks array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.movie).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"test102\",\n\t\"release\": \"2021-05-12 19:40:01.918917\"\n\n}"
+						},
+						"url": {
+							"raw": "{{host}}/movies/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH Actor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8f591722-2dc6-4dd9-bb90-b355b3f32a1a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains drinks array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.movie).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"BanJavioo\",\n\t\"age\": 4,\n\t\"gender\": \"female\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/actors/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"actors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d7fe1bba-26b6-407f-ab67-290752dc4f43",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/movies/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Actor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "68120878-ae2b-472f-b377-f27b9dcebd9a",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/actor/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"actor",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Udacity Capstone test for casting director with all privilages except delete movie",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{director_jwt}}\n",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d2d2abea-f0dd-4b31-b67a-8e064088c7cf",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "5cb7954d-cc0e-4d34-8be7-2073532f4aec",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Executive Producer",
+			"item": [
+				{
+					"name": "GET Movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/movies",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "951a9c7c-03e0-45e1-bd85-bc5ce61069ae",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains drinks array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.actors).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/actors",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0c1730ab-a068-4c7d-88b7-fb055aacff14",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"test101\",\n\t\"release\": \"2020-05-12 19:40:01.918917\"\n\n}"
+						},
+						"url": {
+							"raw": "{{host}}/movies",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Actor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "17f35595-64bd-46c5-bd0d-59dc851376ee",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"BanJavi\",\n\t\"age\": 78,\n\t\"gender\": \"male\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/actors",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH Movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e1066c34-b1d8-4e7a-9e58-9da1ac9b2b3b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains drinks array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.movie).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"test102\",\n\t\"release\": \"2021-05-12 19:40:01.918917\"\n\n}"
+						},
+						"url": {
+							"raw": "{{host}}/movies/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH Actor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "78d2ba41-1822-4b4d-aae8-42839ef6f65e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains drinks array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.movie).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"BanJavioo\",\n\t\"age\": 4,\n\t\"gender\": \"female\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/actors/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"actors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "81770022-e362-43a7-890b-121b9ce00aec",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/movies/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Actor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "11815194-bc7c-41e5-af85-5654ebb23da6",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/actors/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"actors",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Udacity Capstone test for Executive director with all privilages",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{executive_jwt}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "bbce464d-a53f-465c-a91f-99ae0c0a0ced",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "762e77ac-5e61-4969-8c5f-ccf31eac93f7",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "GET TOKEN",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkF4RHp0NGh2MzlOZ0tteUZ0cU55aSJ9.eyJpc3MiOiJodHRwczovL3JtZ21leC5hdXRoMC5jb20vIiwic3ViIjoic3hZUTdNMmY2ZVM0dUVNZHUzSzVsT0RkTkd6NHNCWGNAY2xpZW50cyIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNTg5NDg5OTY0LCJleHAiOjE1ODk1NzYzNjQsImF6cCI6InN4WVE3TTJmNmVTNHVFTWR1M0s1bE9EZE5HejRzQlhjIiwic2NvcGUiOiJnZXQ6bW92aWVzIHBvc3Q6bW92aWUgcGF0Y2g6bW92aWUgZGVsZXRlOm1vdmllIGdldDphY3RvcnMgcG9zdDphY3RvciBwYXRjaDphY3RvciBkZWxldGU6YWN0b3IiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6bW92aWVzIiwicG9zdDptb3ZpZSIsInBhdGNoOm1vdmllIiwiZGVsZXRlOm1vdmllIiwiZ2V0OmFjdG9ycyIsInBvc3Q6YWN0b3IiLCJwYXRjaDphY3RvciIsImRlbGV0ZTphY3RvciJdfQ.dQKYFHTs4bNnVHN92PyPO1uWjtf6cKHnexl0gsVC-f1V3Y3co5vrwz1TY_oK3ziSyz2qC5ZsHJKId-5Y0zthATx2EgU3udxaZ-R_BTdWqtxdiV5u3bg-AQSuXVvkv04YpWl_bdvkijolrygG1APkBSEQwgKNyT-MX8e22vYrTIvl8GsVsxe75DFQmuOCUC7rGXpoaF2IqEC-BvoiJ2pqNWyQBL4QjOSiKxnQqxJmQDaDRJs-MEI0DsjRcNPmrbtjQJ5Le-RDgBLF55o0CnKNb97_iU9m6d5RA4qfib7lyB4e4s4WqnjJLjoKCOQPuR9QyC00PZt9cKSlSEiUOG4d9A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"client\": \"casting assistant\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/token",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "3f8e1d1e-69bc-44ff-b47a-55a856b0452e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "303ae87a-c5c6-4c04-866c-e55c68d54332",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "10b304f4-e9d5-4eec-9ac4-144d97923e85",
+			"key": "host",
+			"value": "https://udacity-capstone-rmg.herokuapp.com",
+			"type": "string"
+		},
+		{
+			"id": "4a934ba0-bd1e-4215-9a47-ee21faed9cd5",
+			"key": "executive_jwt",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkF4RHp0NGh2MzlOZ0tteUZ0cU55aSJ9.eyJpc3MiOiJodHRwczovL3JtZ21leC5hdXRoMC5jb20vIiwic3ViIjoic3hZUTdNMmY2ZVM0dUVNZHUzSzVsT0RkTkd6NHNCWGNAY2xpZW50cyIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNTg5NTY1MTA5LCJleHAiOjE1ODk2NTE1MDksImF6cCI6InN4WVE3TTJmNmVTNHVFTWR1M0s1bE9EZE5HejRzQlhjIiwic2NvcGUiOiJnZXQ6bW92aWVzIHBvc3Q6bW92aWUgcGF0Y2g6bW92aWUgZGVsZXRlOm1vdmllIGdldDphY3RvcnMgcG9zdDphY3RvciBwYXRjaDphY3RvciBkZWxldGU6YWN0b3IiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6bW92aWVzIiwicG9zdDptb3ZpZSIsInBhdGNoOm1vdmllIiwiZGVsZXRlOm1vdmllIiwiZ2V0OmFjdG9ycyIsInBvc3Q6YWN0b3IiLCJwYXRjaDphY3RvciIsImRlbGV0ZTphY3RvciJdfQ.M5rre6uqkeL4Nnlhu6sCe9hBJkMhnWtGKYKxokCD-YvlPSpeuS4RDCxdIYjbVZR-gMDBBd1ot9YIkJ5-DwxUUrbb1elNapspFiMYlJ7NCU2YSdjx9CjAA1TWo6L9GbzzgcScW6qc_ykH5aSEMoDLQyS4I5kIfm63IK9tCD_X-O-SKaacV-k-1RZHnXT0QkkxjmgLJGtEDVQBTDnGk0HeTgnZgyazRLmWWiu_HD_pq9PwUUbVOVGzj3t9jC0yT6gBipgV5yMomQk9etcw1mjBVF-VRuD8aSEn6dDom5GpPOuEvndS27CXTspi09kLmxB7BxPEdB-umjFIPVeMoPu_5w",
+			"type": "string"
+		},
+		{
+			"id": "5023bdee-f0c9-4462-9882-b276e6cc65ef",
+			"key": "director_jwt",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkF4RHp0NGh2MzlOZ0tteUZ0cU55aSJ9.eyJpc3MiOiJodHRwczovL3JtZ21leC5hdXRoMC5jb20vIiwic3ViIjoiTzRCMzl6cEk3OWpBNEx3OW5xczQ4ZDRRT1BjaGRKdUxAY2xpZW50cyIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNTg5NTY1MTQ4LCJleHAiOjE1ODk2NTE1NDgsImF6cCI6Ik80QjM5enBJNzlqQTRMdzlucXM0OGQ0UU9QY2hkSnVMIiwic2NvcGUiOiJnZXQ6bW92aWVzIHBvc3Q6bW92aWUgcGF0Y2g6bW92aWUgZ2V0OmFjdG9ycyBwb3N0OmFjdG9yIHBhdGNoOmFjdG9yIGRlbGV0ZTphY3RvciIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyIsInBlcm1pc3Npb25zIjpbImdldDptb3ZpZXMiLCJwb3N0Om1vdmllIiwicGF0Y2g6bW92aWUiLCJnZXQ6YWN0b3JzIiwicG9zdDphY3RvciIsInBhdGNoOmFjdG9yIiwiZGVsZXRlOmFjdG9yIl19.jlu1ZDlpwYpMEWlIFF-GeSv35EmJINvCHpm2GqObV5kX_YJijGdmg4q2Y2Kn5Z_H5a9pG9OLHgS1mketcEX97Jv2_ZoKglJlNHVmFUTXeYm0Fezoqgxa_VmVnQWw4QQWWap39o48_IBJfAC-4-5ifbqr8e95EyToLS7DoN2B4nTe_N1TLp-_7Gb__V_TAZ77kqB6DHUbktVK-u7W5AaoBQNN2T6B6VX7iw9-sap1Meqa8PaZqks0zDdwl5EM0msxhcnSrxHN7h2-oU2_MP7wT72UvkyLbS0AXpK9mw1LWpyhn3q4I6gG4sQZBTpVXlASB9333_xIBaoCdNuXwwoCxw",
+			"type": "string"
+		},
+		{
+			"id": "4266a27a-2425-4180-ac61-a478572349c2",
+			"key": "assistant_jwt\n",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkF4RHp0NGh2MzlOZ0tteUZ0cU55aSJ9.eyJpc3MiOiJodHRwczovL3JtZ21leC5hdXRoMC5jb20vIiwic3ViIjoiYWhvUGpZQXh3WnYzVTMwMHd1QlZFNlRnNERHWUhXaXNAY2xpZW50cyIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNTg5NTY1MTg0LCJleHAiOjE1ODk2NTE1ODQsImF6cCI6ImFob1BqWUF4d1p2M1UzMDB3dUJWRTZUZzRER1lIV2lzIiwic2NvcGUiOiJnZXQ6bW92aWVzIGdldDphY3RvcnMiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6bW92aWVzIiwiZ2V0OmFjdG9ycyJdfQ.c-hInjWEwsuho6DdEnS9iFNyRalq-50LGANpWu7hgkcxmOxNf4WcU6WUe8v6Vtw7JWPkCQgq5m3xXdOefFZc-YGs4lrm9AY1vjZ_FpL3S5SJlUDA2ChSfXeah5YzIgAq6SmC0FeHHPCJVpgaAoOCsEPBGYdReSAunEOQzIxyZfxZelbdNBBp3y_2DNotfHCJafOmjgpvt-tiMR_x_G-t8i32plT9MeMFumzZbDQyE_1vWG95gplKsX7TLId0Q0sA6ytOlWOoGtw-zbvFudpLedvtdDvcXynYhZzfYao7_uL52K85v2j8DDTssZuUACFi0yvtwbxa286K8tf_KYIjhg",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

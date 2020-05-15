@@ -107,15 +107,6 @@ class AgencyTestCase(unittest.TestCase):
         self.assertEqual(data['success'], True)
         self.assertTrue(data['movie'])
     
-    def test_patch_actors_executive_producer(self):
-        res = self.client().patch('/actors/1', headers={'Content-Type': 'application/json', 'Authorization': 'Bearer %s' %(executive_producer_jwt["access_token"])}, json={"name": "Bon Javij 1", "age": 20, "gender": "female"})
-        data = json.loads(res.data)
-        print(data)
-        
-        self.assertEqual(res.status_code, 200)
-        self.assertEqual(data['success'], True)
-        self.assertTrue(data['actor'])
-
     def test_delete_movies_executive_producer(self):
         res = self.client().delete('/movies/1', headers={'Content-Type': 'application/json', 'Authorization': 'Bearer %s' %(executive_producer_jwt["access_token"])})
         data = json.loads(res.data)
@@ -124,7 +115,7 @@ class AgencyTestCase(unittest.TestCase):
         self.assertEqual(data['success'], True)
         self.assertTrue(data['movie'])
 
-    def test_delete_movies_executive_producer(self):
+    def test_delete_actors_executive_producer(self):
         res = self.client().delete('/actors/1', headers={'Content-Type': 'application/json', 'Authorization': 'Bearer %s' %(executive_producer_jwt["access_token"])})
         data = json.loads(res.data)
         
@@ -170,13 +161,6 @@ class AgencyTestCase(unittest.TestCase):
         self.assertEqual(data['success'], True)
         self.assertTrue(data['movie'])
     
-    def test_patch_actors_director(self):
-        res = self.client().patch('/actors/2', headers={'Content-Type': 'application/json', 'Authorization': 'Bearer %s' %(casting_director_jwt["access_token"])}, json={"age": 20, "gender": "female"})
-        data = json.loads(res.data)
-        
-        self.assertEqual(res.status_code, 200)
-        self.assertEqual(data['success'], True)
-        self.assertTrue(data['actor'])
 
     def test_delete_movies_casting_director(self):
         res = self.client().delete('/movies/2', headers={'Content-Type': 'application/json', 'Authorization': 'Bearer %s' %(casting_director_jwt["access_token"])})
